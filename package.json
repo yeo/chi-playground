@@ -5,7 +5,9 @@
   "repository": {},
   "license": "MIT",
   "dependencies": {
+    "async": "^2.2.0",
     "color-thief": "^2.2.2",
+    "lowdb": "^0.16.0",
     "webshot": "^0.18.0"
   }
 }
