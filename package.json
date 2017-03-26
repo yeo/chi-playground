@@ -1,0 +1,11 @@
+{
+  "name": "colors",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {},
+  "license": "MIT",
+  "dependencies": {
+    "color-thief": "^2.2.2",
+    "webshot": "^0.18.0"
+  }
+}
