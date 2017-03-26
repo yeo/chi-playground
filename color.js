@@ -20,16 +20,14 @@ function generate(site) {
   var n = d.toISOString();
 
   const siteColors = getColor('./shots/' + site.id + '.png')
-  let post = `
-+++
+  let post = `+++
 date = "${n}"
 title = "${site.src}"
 draft = false
-colors: [${siteColors}]
 +++
 
-${site.src}
-  `
+<span style="background-color: ${siteColors}; width: 10x; height: 10px; display: inline-block;"></span>
+`
   fs.writeFile(`./copvan/content/colors/${site.id}.md`, post, err => {
     if (err) {
       return console.log(err);
