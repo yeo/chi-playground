@@ -2,17 +2,13 @@ const webshot = require('webshot')
 const readline = require('readline')
 const stream = require('stream')
 const async   = require('async')
-const db = require('lowdb')('db.json')
+const db = require('./db')
 
 const fs = require('fs')
 const instream = fs.createReadStream('./urls')
 const outstream = new stream
 const rl = readline.createInterface(instream, outstream)
 let queue = []
-
-function initDb() {
-  db.defaults({ sites: [] }).write()
-}
 
 rl.on('line', url => {
   const filename = url.replace(/[^\w]/g, "-")
@@ -28,7 +24,6 @@ rl.on('close', () => {
   console.log("Processing")
   async.eachLimit(queue, 10, (url, next) => {
     const filename = url.replace(/[^\w]/g, "-")
-    console.log("Doing", url)
     webshot(url, `shots/${filename}.png`, {
       phantomConfig: {
         "ssl-protocol": "any",
@@ -37,10 +32,12 @@ rl.on('close', () => {
     }, (err) => {
       if (err) {
         console.log("Error when take", url, err)
+        console.log("[ ]", url)
       } else {
         db.get('sites')
           .push({id: filename, src: filename})
           .write()
+        console.log("[x]", url)
       }
       next()
     })
