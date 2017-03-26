@@ -11,8 +11,7 @@ const rl = readline.createInterface(instream, outstream)
 let queue = []
 
 rl.on('line', url => {
-  const filename = url.replace(/[^\w]/g, "-")
-  if (filename == "") {
+  if (url == "") {
     return
   }
 
@@ -21,9 +20,10 @@ rl.on('line', url => {
 })
 
 rl.on('close', () => {
-  console.log("Processing")
-  async.eachLimit(queue, 10, (url, next) => {
+  console.log("Start processing")
+  async.eachLimit(queue, 5, (url, next) => {
     const filename = url.replace(/[^\w]/g, "-")
+
     webshot(url, `shots/${filename}.png`, {
       phantomConfig: {
         "ssl-protocol": "any",
@@ -35,7 +35,7 @@ rl.on('close', () => {
         console.log("[ ]", url)
       } else {
         db.get('sites')
-          .push({id: filename, src: filename})
+          .push({id: filename, src: filename, address: url})
           .write()
         console.log("[x]", url)
       }
