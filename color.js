@@ -27,19 +27,21 @@ function generate(site) {
 
     const siteColors = getColor(shotPath)
     const content = siteColors.map(c => {
-      return `<span style="background-color: ${c}; width: 20px; height: 20px; display: inline-block;"></span>`
+      return `<span style="background-color: ${c};" class="color-droplet"></span>`
     }).join("")
 
     let post = `+++
 date = "${n}"
-title = "${site.src}"
+title = "${site.address}"
 draft = false
 +++
 ${content}`
-    fs.writeFile(`./copvan/content/posts/${site.id}.md`, post, err => {
+    const hugoFile = `./copvan/content/posts/${site.id}.md`
+    fs.writeFile(hugoFile, post, err => {
       if (err) {
         return console.log(err);
       }
+      console.log("Write", hugoFile)
     })
 
   })

@@ -1,4 +1,4 @@
-const db = require('lowdb')('db.json')
+const db = require('lowdb')('./db/db.json')
 
 function initDb() {
   db.defaults({ sites: [] }).write()
