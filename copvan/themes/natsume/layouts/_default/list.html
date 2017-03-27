@@ -1,0 +1,20 @@
+{{ partial "header.html" . }}
+<body class="{{ .Site.Params.themeColor }}">
+
+  <section class="container px2 py3">
+    {{ partial "sidebar.html" . }}
+    <div class="clearfix mxn2">
+      <div class="sm-col sm-col-8 md-col-9 px2 content">
+        <div class="posts">
+          {{ range .Data.Pages }}
+          <h2 class="h3">
+            <span><a href="{{ .Permalink }}">{{ .Title }}</a> <time class="pull-right post-list">{{ .Date.Format "Mon, Jan 2, 2006" }}</time></span>
+          </h2>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+{
+  "name": "natsume",
+  "version": "1.0.0",
+  "description": "Hugo theme",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "https://github.com/NotyIm/natsume.git",
+  "keywords": [
+    "hugo",
+    "natsume",
+    "axcoto",
+    "notyim"
+  ],
+  "author": "Vinh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NotyIm/natsume/issues"
+  },
+  "homepage": "https://github.com/NotyIm/natsume",
+  "devDependencies": {
+    "basscss": "^7.0.3",
+    "gulp": "^3.9.0"
+  },
+  "dependencies": {
+    "bulma": "^0.4.0",
+    "gulp-sass": "^3.1.0"
+  }
+}

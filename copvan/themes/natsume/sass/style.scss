@@ -1,0 +1,40 @@
+@import "_define";
+@import "_base";
+
+@import "node_modules/bulma/bulma";
+
+@mixin hero {
+  background-size: cover;
+}
+
+.logo, .nav-item.logo {
+    font-size: 2em;
+    font-weight: lighter;
+    color: #FF7473;
+    text-transform: lowercase;
+    background: url(/images/logo-xss.png) no-repeat center;
+    background-size: 50% auto; 
+    width: 98px;
+    height: 53px;
+    text-indent: -1000px;
+}
+
+.intro {
+  color: whitesmoke;
+
+  .title {
+    color: whitesmoke;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.6);
+    font-size: 3.5em;
+  }
+
+  .content {
+    color: whitesmoke;
+  }
+}
+
+.color-droplet {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}

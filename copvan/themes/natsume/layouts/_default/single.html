@@ -1,0 +1,38 @@
+{{ partial "header.html" . }}
+<body class="{{ .Site.Params.themeColor }}">
+  {{ partial "nav.html" . }}
+
+  <section class="hero is-medium has-text-centered">
+  <div class="hero-body intro" style="background-image: url({{ .Params.background_image }}); background-size: cover;">
+    <div class="container">
+      <div class="content has-text-centered">
+        <h1 class="title is-1"><strong>{{ .Title }}</strong></h1>
+        <p class="content">{{ .Description }}</p>
+        <span>Post by {{ .Params.author }} on <time class="pull-right post-list">{{ .Date.Format "Mon, Jan 2, 2006" }}</time></span>
+      </div>
+    </div>
+  </div>
+  </section>
+
+  <section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column posts">
+
+        <div class="content"> {{ .Content }} </div>
+
+        {{ if and (isset .Site.Params "disqusShortname") (ne .Site.Params.disqusShortname "") }}
+        <h2>Comments</h2>
+        {{ partial "disqus" . }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+  </section>
+
+  {{ partial "footer.html" . }}
+
+  <script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>

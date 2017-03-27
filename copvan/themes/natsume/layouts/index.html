@@ -1,0 +1,74 @@
+{{ partial "header.html" . }}
+
+<body class="{{ .Site.Params.themeColor }}">
+  <!-- {{ partial "nav.html" . }} -->
+
+  <section class="hero is-medium has-text-centered">
+    <div class="hero-body">
+      <h1 class="title">Good Artists Copy - Great Artists Steal</h1>
+      <h2 class="subtitle">Color palette from popular websites</h2>
+    </div>
+  </section>
+
+  <section class="section">
+  <div class="container">
+
+    <div class="columns">
+      <div class="column is-8">
+        <div class="title">Sort by</div>
+      </div>
+      <div class="column is-4 has-text-right">
+        <a class="button is-primary is-active">Newest</a>
+        <a class="button">Like</a>
+      </div>
+    </div>
+    <hr>
+
+    {{ $cols := 4}}
+    {{ $paginator := .Paginate (where .Data.Pages "Type" "posts") 32 }}
+    <!-- $len := len .Data.Pages }} -->
+    {{ $len := len $paginator.Pages }}
+    {{ $extraRequired := mod (sub $cols (mod $len $cols)) $cols }}
+
+      <!-- range $key, $value := .Data.Pages }} -->
+      {{ range $key, $value := $paginator.Pages }}
+
+        {{ $isLastElem := not (sub (sub $len 1) $key)}}
+
+        {{ if modBool $key $cols }}
+    <div class="columns">
+        {{ end }}
+
+      <div class="column is-3">
+        <div class="panel">
+          <p class="panel-heading"><a href="{{ .Title }}" target="_blank">{{ .Title }}</a></p>
+          <div class="panel-block has-text-centered ">
+            <div class="is-marginless">{{ .Content }}</div>
+          </div>
+          <div class="panel-block">
+            <div class="columns">
+              <div class="column has-text-right">
+                <div class="panel-block-item">2 likes</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        {{ if or (modBool (add $key 1) $cols) $isLastElem }}
+    </div>
+        {{end}}
+      {{ end }}
+
+  </div>
+  </section>
+
+
+  <section class="section">
+  <div class="container">{{ partial "pagination.html" . }}</div>
+  </section>
+
+  {{ partial "footer.html" . }}
+</body>
+</html>
+
