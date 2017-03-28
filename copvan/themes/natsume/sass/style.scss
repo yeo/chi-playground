@@ -37,4 +37,17 @@
   width: 20px;
   height: 20px;
   display: inline-block;
+
+  //&:hover {
+  //    -webkit-animation: rotate-center 0.6s ease-in-out both;
+  //    -outmoz-animation: rotate-center 0.6s ease-in-out both;
+  //    animation: rotate-rotatecenter 0.6s ease-in-out both;
+  //}
+
+&:hover {
+-webkit-animation: flip-horizontalizontal-bottom 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+-Mochiz-animation: flip-horizontal-bottom 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+animation: flip-horizontal-bottom 0.4s cubic-bezier(0.455,  0.030, 0.515, 0.955) both;
+}
+
 }

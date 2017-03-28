@@ -3969,3 +3969,7 @@ label.panel-block {
   width: 20px;
   height: 20px;
   display: inline-block; }
+  .color-droplet:hover {
+    -webkit-animation: flip-horizontalizontal-bottom 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+    -Mochiz-animation: flip-horizontal-bottom 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+    animation: flip-horizontal-bottom 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) both; }
