@@ -43,7 +43,11 @@
         <div class="panel">
           <p class="panel-heading"><a href="{{ .Title }}" target="_blank">{{ .Title }}</a></p>
           <div class="panel-block has-text-centered ">
-            <div class="is-marginless">{{ .Content }}</div>
+            <!--<div class="is-marginless">{{ .Content }}</div>-->
+            {{ range $color := .Params.colors }}
+              <a style="background-color: {{ printf "%s" $color | safeCSS }};" class="color-droplet hvr-grow" data-clipboard-text="rgb(228, 226, 221)"></a>
+            {{ end }}
+
           </div>
           <div class="panel-block">
             <div class="columns">

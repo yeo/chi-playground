@@ -2,6 +2,7 @@
 @import "_base";
 
 @import "node_modules/bulma/bulma";
+@import "node_modules/hover.css/scss/hover.scss";
 
 @mixin hero {
   background-size: cover;
@@ -44,10 +45,10 @@
   //    animation: rotate-rotatecenter 0.6s ease-in-out both;
   //}
 
-&:hover {
--webkit-animation: flip-horizontalizontal-bottom 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
--Mochiz-animation: flip-horizontal-bottom 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
-animation: flip-horizontal-bottom 0.4s cubic-bezier(0.455,  0.030, 0.515, 0.955) both;
-}
+  &:hover {
+  -webkit-animation: flip-horizontalizontal-bottom 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+  -Mochiz-animation: flip-horizontal-bottom 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+  animation: flip-horizontal-bottom 0.4s cubic-bezier(0.455,  0.030, 0.515, 0.955) both;
+  }
 
 }

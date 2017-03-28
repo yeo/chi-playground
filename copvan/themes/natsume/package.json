@@ -24,7 +24,10 @@
     "gulp": "^3.9.0"
   },
   "dependencies": {
+    "animate.css": "^3.5.2",
+    "balloon-css": "^0.4.0",
     "bulma": "^0.4.0",
-    "gulp-sass": "^3.1.0"
+    "gulp-sass": "^3.1.0",
+    "hover.css": "^2.2.0"
   }
 }
