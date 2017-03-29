@@ -5,8 +5,8 @@
 
   <section class="hero is-medium has-text-centered">
     <div class="hero-body">
-      <h1 class="title">Good Artists Copy - Great Artists Steal</h1>
-      <h2 class="subtitle">Color palette from popular websites</h2>
+      <h1 class="title">Mix color the developer way</h1>
+      <h2 class="subtitle">We take screenshot of popular websites and generate color pallete from them</h2>
     </div>
   </section>
 
@@ -52,11 +52,14 @@
 
           </div>
           <div class="panel-block">
-            <div class="columns">
-              <div class="column has-text-right">
-                <div class="panel-block-item">2 likes</div>
-              </div>
-            </div>
+                  <a href="#" class="heart">
+                    <span class="icon"><span class="lnr lnr-heart"></span></span>
+                    <span class="count tag">2</span>
+                  </a>
+
+                  <!-- {{ range .Params.tags }}
+                    <a href="/tags/{{ . | urlize }}" >{{ . }}</a>
+                    {{ end }} -->
           </div>
         </div>
       </div>

@@ -1,20 +1,65 @@
 {{ partial "header.html" . }}
-<body class="{{ .Site.Params.themeColor }}">
 
-  <section class="container px2 py3">
-    {{ partial "sidebar.html" . }}
-    <div class="clearfix mxn2">
-      <div class="sm-col sm-col-8 md-col-9 px2 content">
-        <div class="posts">
-          {{ range .Data.Pages }}
-          <h2 class="h3">
-            <span><a href="{{ .Permalink }}">{{ .Title }}</a> <time class="pull-right post-list">{{ .Date.Format "Mon, Jan 2, 2006" }}</time></span>
-          </h2>
-          {{ end }}
+<body class="{{ .Site.Params.themeColor }}">
+  <!-- {{ partial "nav.html" . }} -->
+
+  <section class="section">
+  <div class="container">
+
+    {{ $cols := 4}}
+    {{ $paginator := .Paginate (.Data.Pages) 32 }}
+    {{ $len := len $paginator.Pages }}
+    {{ $extraRequired := mod (sub $cols (mod $len $cols)) $cols }}
+
+      <!-- range $key, $value := .Data.Pages }} -->
+      {{ range $key, $value := $paginator.Pages }}
+
+        {{ $isLastElem := not (sub (sub $len 1) $key)}}
+
+        {{ if modBool $key $cols }}
+    <div class="columns">
+        {{ end }}
+
+      <div class="column is-3">
+        <div class="panel">
+          <p class="panel-heading"><a href="{{ .Title }}" target="_blank">{{ .Title }}</a></p>
+          <div class="panel-block has-text-centered ">
+            <!--<div class="is-marginless">{{ .Content }}</div>-->
+            <div class="tile">
+            {{ range $color := .Params.colors }}
+              <a data-balloon="#{{ printf "%s" $color | safeCSS }}" data-balloon-pos="up" style="background-color: #{{ printf "%s" $color | safeCSS }};" class="tile color-droplet hvr-grow" data-clipboard-text="#{{ printf "%s" $color | safeCSS }};"></a>
+            {{ end }}
+            </div>
+
+          </div>
+          <div class="panel-block">
+            <div class="columns">
+              <div class="column has-text-right">
+                <div class="panel-block-item">
+                {{ range .Params.tags }}
+                  <a href="/tags/{{ . | urlize }}" >{{ . }}</a>
+                  {{ end }}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
+        {{ if or (modBool (add $key 1) $cols) $isLastElem }}
     </div>
+        {{end}}
+      {{ end }}
+
+  </div>
   </section>
 
+
+  <section class="section">
+  <div class="container">{{ partial "pagination.html" . }}</div>
+  </section>
+
+  {{ partial "footer.html" . }}
 </body>
 </html>
+

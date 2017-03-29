@@ -56,6 +56,10 @@ function classify(hue,sat, lgt) {
     return "Red"
 }
 
+function classifyRgv(c) {
+  
+}
+
 function generate(site) {
   const d = new Date()
   var n = d.toISOString()
@@ -88,7 +92,7 @@ date = "${n}"
 title = "${site.address}"
 draft = false
 colors  = [${hexColors}]
-tags   = [${hslColors}]
+tags   = [${tags}]
 +++`
     const hugoFile = `./copvan/content/posts/${site.id}.md`
     fs.writeFile(hugoFile, post, err => {
